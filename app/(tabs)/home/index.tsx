@@ -52,7 +52,7 @@ const Home = () => {
 
 
   function navigateToConfirm(imageUrl:any):void{
-    router.navigate({ pathname: '/home/confirm', params: { id: imageUrl } });
+    router.navigate({ pathname: '/home/confirm', params: { imageUrl: imageUrl } });
   }
 
   return (

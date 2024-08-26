@@ -9,7 +9,7 @@ import CustomSeparator from '@/components/CustomSeparator';
 
 const Confirm = () => {
   const route = useRoute();
-  const { id }:any = route.params;
+  const { imageUrl }:any = route.params;
 
   return (
     <View style={styles.container}>
@@ -19,10 +19,12 @@ const Confirm = () => {
 
 
         <View style={{width:'100%',height:'30%',marginVertical:'10%',borderRadius:10,overflow:'hidden'}}>
-          <ImageBackground resizeMode='cover' style={{width:'100%',height:'100%'}} source={{uri:id}}/>
+          <ImageBackground resizeMode='cover' style={{width:'100%',height:'100%'}} source={{uri:imageUrl}}/>
         </View>
         
-        <CustomButton onPress={()=>{router.navigate('/home/processing')}}> Proceed</CustomButton>
+        <CustomButton onPress={()=>{
+          router.navigate({ pathname: '/home/processing', params: { imageUrl: imageUrl } });
+        }}> Proceed</CustomButton>
         <CustomSeparator height={'8%'}/>
         <CustomButton background={Colors.background} onPress={()=>router.back()}> Retake</CustomButton>
     </View>

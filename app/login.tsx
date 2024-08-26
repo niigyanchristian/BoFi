@@ -8,16 +8,17 @@ import { Formik } from 'formik';
 import CustomButton from '@/components/CustomButton'
 import axios from 'axios';
 import useFirebase from '../hooks/useFirebase'
-import CustomSeparator from '@/components/CustomSeparator'
+import CustomSeparator from '@/components/CustomSeparator';
 import useApi from '../hooks/useApi';
 import auth from '../api/auth'
 import { router } from 'expo-router';
+import useAuth from '@/auth/useAuth';
 
 function SigIn() {
   const [active, setActive] = useState<boolean>(false);
+  const {logIn,user} =useAuth();
   
-  const loginApi =useApi(auth.login)
-
+  const loginApi =useApi(auth.login);
 
   async function handleSubmit({email,password}:any):Promise<void>{
     setActive(true);
@@ -26,9 +27,8 @@ function SigIn() {
       setActive(false);
       return;
     };
-    console.log('====================================');
-    console.log(result.data);
-    console.log('====================================');
+
+    logIn(result.data);
   }
   return (
     <View style={{flex:1, backgroundColor:Colors.background}}>

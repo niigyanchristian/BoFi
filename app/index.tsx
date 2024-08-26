@@ -23,7 +23,7 @@ const index = () => {
 
       <CustomSeparator height={20}/>
       <CustomButton background={Colors.background} 
-      onPress={()=>router.navigate('/login')}>Sign In</CustomButton>
+      onPress={()=>router.replace('/login')}>Sign In</CustomButton>
       <CustomSeparator height={20}/>
     </View>
   )
